@@ -9,10 +9,10 @@ import io.restassured.response.Response;
 public class assignment {
 
 	@Test
-	public void apiChanging() {
+	public void apiChaining() {
 		// https://reqres.in/api/users/2
 		
-		RestAssured.baseURI = " https://reqres.in/api/";
+		RestAssured.baseURI = "https://reqres.in/api";
 		
 		Response response = 
 				given()
@@ -24,8 +24,8 @@ public class assignment {
 				.response();
 		System.out.println(response);
 		 int id=response.jsonPath().getInt("data[0].id");
-	        int id2=response.jsonPath().getInt("total");
-	        
+	        int total =response.jsonPath().getInt("total");
+	       
 //			String firstName = response.jsonPath().getString("data[5].first_name");
 //			String text = response.jsonPath().getString("support.text");
 	        
