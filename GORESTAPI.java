@@ -55,7 +55,7 @@ public class GORESTAPI {
 	@Test
 	public void updateUser() {
 		String email =getSaltString()+"@gmail.com";
-		String requestBody = "{\"name\":\"Tenali Ramakrishna\", \"gender\":\"male\", \"email\":\""+email+"\", \"status\":\"active\"}";
+		String requestBody = "{\"name\":\"Tenal Ramakrishna\", \"gender\":\"male\", \"email\":\""+email+"\", \"status\":\"active\"}";
 		RestAssured.baseURI = "https://gorest.co.in/public/v2/users";
 		Response response = RestAssured
 				          .given()
@@ -63,7 +63,7 @@ public class GORESTAPI {
 				            .header("Content-Type","application/json")
 				            .header("Authorization",token)
 				            .body(requestBody)
-				            .when().patch("/5662822");
+				            .when().patch("/5674310");
 		                 response.then().log().all();
 				         response.then().statusCode(200);
 		
@@ -80,7 +80,7 @@ RestAssured.baseURI = "https://gorest.co.in/public/v2/users";
 				            .header("Accept","application/json")
 				            .header("Content-Type","application/json")
 				            .header("Authorization",token)
-				            .when().delete("/5662822");
+				            .when().delete("/5674310");
 				            
 		response.then().statusCode(204);
 		

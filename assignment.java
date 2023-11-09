@@ -1,6 +1,7 @@
 package day1;
 
 import static io.restassured.RestAssured.given;
+
 import org.testng.annotations.Test;
 import static org.hamcrest.Matchers.equalTo;
 import io.restassured.RestAssured;
@@ -23,7 +24,7 @@ public class assignment {
 				.extract()
 				.response();
 		System.out.println(response);
-		 int id=response.jsonPath().getInt("data[0].id");
+		 int id=response.jsonPath().getInt("data[0].id");// 7-id
 	        int total =response.jsonPath().getInt("total");
 	       
 //			String firstName = response.jsonPath().getString("data[5].first_name");

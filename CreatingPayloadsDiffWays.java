@@ -1,10 +1,8 @@
 package day1;
 
 import java.io.FileNotFoundException;
-
 import java.io.FileReader;
 import java.util.Random;
-
 import org.json.JSONObject;
 import org.json.JSONTokener;
 import org.testng.annotations.Test;
@@ -27,7 +25,7 @@ public class CreatingPayloadsDiffWays {
 
     }
 	@Test
-	public void createUser() throws FileNotFoundException {
+	public void createUser()  {
 
 		// using Hashmap
 		String email = getSaltString() + "@gmail.com";
@@ -50,16 +48,16 @@ public class CreatingPayloadsDiffWays {
 		
 		// Using pojo class
 		
-	//	Students payload = new Students("madhu duggirala",email,"male","active");
+		Students payload = new Students("satya koka", email, "female", "active");
 		
-		// using external json
+	/*	// using external json
 	    // Create a FileReader to read the JSON file
         FileReader fileReader = new FileReader("/Users/madhuduggirala/eclipse-workspace/RestAssured/src/test/java/day1/obj.json");
         // Create a JSONTokener to parse the JSON data
         JSONTokener tokener = new JSONTokener(fileReader);
         // Create a JSONObject from the parsed data
         JSONObject jsonpayload = new JSONObject(tokener);
-        String payload = jsonpayload.toString();
+        String payload = jsonpayload.toString();*/
 		
 		
 		
