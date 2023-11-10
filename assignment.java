@@ -25,7 +25,7 @@ public class assignment {
 				.response();
 		System.out.println(response);
 		 int id=response.jsonPath().getInt("data[0].id");// 7-id
-	        int total =response.jsonPath().getInt("total");
+	     //   int total =response.jsonPath().getInt("total");
 	       
 //			String firstName = response.jsonPath().getString("data[5].first_name");
 //			String text = response.jsonPath().getString("support.text");

@@ -2,13 +2,14 @@ package day1;
 
 import java.util.Random;
 
+
 import org.testng.annotations.Test;
 
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 
 public class APITestCases {
-	
+	int id = 0;
 	private String accessToken = "956e38dfc3c6f27c212a3c058cf11d52bbc76dced2c4453459ab7a206a672acb";
 	
 	APIUtilities  apiUtils = new APIUtilities(accessToken) ;
@@ -25,35 +26,43 @@ public class APITestCases {
         return saltStr;
 	}
 	
-	@Test
+	@Test(priority= 1)
 	public void testGetRequest() {
 		Response getResponse = apiUtils.sendGetRequest("/users");
 		getResponse.then().statusCode(200);
 		getResponse.then().log().all();
 		
 	}
-	@Test
+	@Test(priority= 2)
 	public void testPostRequest() {
 		String email =getSaltString()+"@gmail.com";
 		String payload = "{\"name\":\"Tenali Ramakrishna\", \"gender\":\"male\", \"email\":\""+email+"\", \"status\":\"active\"}";
 		Response postResponse = apiUtils.sendPostRequest("/users", payload);
 		postResponse.then().statusCode(201);
 		postResponse.then().log().all();
-		//5705349
+		
+		 id = postResponse.jsonPath().getInt("id");
+		System.out.println(id);
+		String name =postResponse.jsonPath().getString("name");
+		System.out.println(name);
+		
+		String status =postResponse.jsonPath().getString("status");
+		System.out.println(status);
+		
 	}
 	
-	@Test
+	@Test(priority= 3)
 	public void testPutRequest() {
 		String email =getSaltString()+"@gmail.com";
 		String payload = "{\"name\":\"Tenali Sharma\", \"gender\":\"male\", \"email\":\""+email+"\", \"status\":\"active\"}";	
-		Response putResponse = apiUtils.sendPutRequest("/users/5705349", payload);
+		Response putResponse = apiUtils.sendPutRequest("/users/" +id, payload);
 		putResponse.then().statusCode(200);
 		putResponse.then().log().all();
 	}
 	
-	@Test
+	@Test(priority= 4)
 	public void testDeleteRequest() {
-		Response deleteResponse = apiUtils.sendDeleteRequest("/users/5705349");
+		Response deleteResponse = apiUtils.sendDeleteRequest("/users/"+id);
 		deleteResponse.then().statusCode(204);
 		
 	}

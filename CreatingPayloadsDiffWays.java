@@ -1,6 +1,8 @@
 package day1;
 
 import java.io.FileNotFoundException;
+
+
 import java.io.FileReader;
 import java.util.Random;
 import org.json.JSONObject;
@@ -25,7 +27,7 @@ public class CreatingPayloadsDiffWays {
 
     }
 	@Test
-	public void createUser()  {
+	public void createUser() throws FileNotFoundException  {
 
 		// using Hashmap
 		String email = getSaltString() + "@gmail.com";
@@ -38,6 +40,7 @@ public class CreatingPayloadsDiffWays {
 		payload.put("status", "active");*/
 		
 		// creating a payload using org.json
+		
 		/*JSONObject jsonPayload = new JSONObject();
 		jsonPayload.put("name", "John Doe");
 		jsonPayload.put("email", email);
@@ -48,16 +51,18 @@ public class CreatingPayloadsDiffWays {
 		
 		// Using pojo class
 		
-		Students payload = new Students("satya koka", email, "female", "active");
+		//Students payload = new Students("satya koka", email, "female", "active");
+		//System.out.println(payload.email);
 		
-	/*	// using external json
+		// using external json
+		
 	    // Create a FileReader to read the JSON file
         FileReader fileReader = new FileReader("/Users/madhuduggirala/eclipse-workspace/RestAssured/src/test/java/day1/obj.json");
         // Create a JSONTokener to parse the JSON data
         JSONTokener tokener = new JSONTokener(fileReader);
         // Create a JSONObject from the parsed data
         JSONObject jsonpayload = new JSONObject(tokener);
-        String payload = jsonpayload.toString();*/
+        String payload = jsonpayload.toString();
 		
 		
 		
@@ -71,8 +76,25 @@ public class CreatingPayloadsDiffWays {
 
 		response.then().log().all();
 		response.then().statusCode(201);
-		
+	}
 	
-	}		
+
+	//@Test
+	public void createUsers()  {
+		String email = getSaltString() + "@gmail.com";
+// Using pojo class
+		
+		Students payload = new Students("satya koka", email, "female", "inactive");
+		RestAssured.baseURI = "https://gorest.co.in/public/v2/users";
+		Response response = RestAssured.given().header("Accept", "application/json")
+				.header("Content-Type", "application/json")
+				.header("Authorization", token)
+				.body(payload)
+				.when().post();
+
+		response.then().log().all();
+		response.then().statusCode(201);
+		
+	}
 
 }

@@ -1,6 +1,7 @@
 package day1;
 
 import static io.restassured.RestAssured.given;
+
 import static org.hamcrest.Matchers.equalTo;
 
 import org.testng.annotations.Test;
@@ -10,8 +11,6 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
 public class requresdotin {	
-	int a = 10;
-	String name ="satya";
 	
 	@Test
 	public void getUsers() {

@@ -8,7 +8,7 @@ public class Students {
 	String status;
 	
 	public Students(String name, String gender, String email, String status) {
-		super();
+		
 		this.name = name;
 		this.gender = gender;
 		this.email = email;
