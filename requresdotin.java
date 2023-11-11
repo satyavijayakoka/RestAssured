@@ -15,6 +15,7 @@ public class requresdotin {
 	@Test
 	public void getUsers() {
 		// https://reqres.in/api/users/2
+		https://reqres.in/api/users?page=2
 		RestAssured.baseURI = "https://reqres.in/api";
 		Response response = 
 				given()

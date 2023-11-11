@@ -1,6 +1,7 @@
 package day1;
 
 import org.testng.annotations.Test;
+
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import static io.restassured.RestAssured.*;
@@ -33,6 +34,17 @@ public class pathAndQueryParameters {
 		res.then().header("Cache-Control", Matchers.equalTo("max-age=14400"));
 		res.then().header("Vary", Matchers.equalTo("Accept-Encoding"));
 		res.then().header("CF-Cache-Status", Matchers.equalTo("HIT"));
+		
+		
+		res.then().body("page", Matchers.equalTo(2));
+		res.then().body("per_page",Matchers.equalTo(6));
+		res.then().body("total",Matchers.equalTo(12));
+		res.then().body("total_pages",Matchers.equalTo(12));
+		res.then().body("data[0].id",Matchers.equalTo(7));
+		res.then().body("data[0].email",Matchers.equalTo("michael.lawson@reqres.in"));
+		res.then().body("data[2].first_name", Matchers.equalTo("Tobias"));
+		
+		
 		
 	}
 
